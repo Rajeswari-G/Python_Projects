@@ -1,0 +1,113 @@
+#-----==[]
+#win
+#reduce the turns
+#figure
+#the figure die
+
+#algorithm
+#1.develop the interface
+#2.predefined list
+#3.Instructions
+#4.Check the words (If right then enter in empty list ,then draw the figure)
+# {enter the word
+    #check in valid or not
+#Guessword
+#word main
+#main=word then user win }  for 4 th step.
+#5.Reduce the turn
+#6.Generate the figure
+
+
+#Predefined list
+import random
+def hangman():
+    word=random.choice(['spidy','thor','bheem','chucki','jaggu','banana','machine','numpy','pandas','tensorflow','linear'])
+#Instruction
+    valid='abcdefghijklmnopqrstuvwxyz'
+    turn=10
+    guessword=''
+    while len(word)>0:
+        main=""
+        missed=0
+        for letter in word:
+            if letter in guessword:
+                main=main+letter
+            else:
+                main=main+"_"+""
+        if main==word:
+            print(main)
+            print("YOU WIN!")
+            break
+        print("Guess the word:",main)
+        guess=input()
+
+        if guess in  valid:
+            guessword=guess+guessword
+        else:
+            print("Enter a valid character.")
+            guess=input()
+        if guess not in word:
+            turn=turn-1
+            if turn==9:
+                print("9 turns left")
+                print("-------------")
+            if turn==8:
+                print("8 turns left")
+                print("-------------")
+                print("     0    ")
+            if turn==7:
+                print("7 turns left")
+                print("-------------")
+                print("     0    ")
+                print("     |    ")
+            if turn==6:
+                print("6 turns left")
+                print("-------------")
+                print("     0    ")
+                print("     |    ")
+                print("    /     ")
+            if turn==5:
+                print("5 turns left")
+                print("-------------")
+                print("     0    ")
+                print("     |    ")
+                print("    / \   ")
+            if turn==4:
+                print("4 turns left")
+                print("-------------")
+                print("    \0    ")
+                print("     |    ")
+                print("    / \   ")
+            if turn==3:
+                print("3 turns left")
+                print("-------------")
+                print("    \0/  ")
+                print("     |    ")
+                print("    / \   ")
+            if turn==2:
+                print("2 turns left")
+                print("-------------")
+                print("    \0/|  ")
+                print("     |    ")
+                print("    / \   ")
+            if turn==1:
+                print("1 turns left")
+                print("Last breaths counting,Take care")
+                print("    \0_|/  ")
+                print("     |    ")
+                print("    / \   ")
+            if turn==0:
+                print("You loose")
+                print("You let a kind man die")
+                print("     0_|  ")
+                print("    /|\   ")
+                print("    / \   ")
+                break
+
+#USER INTERFACE
+name=input("Enter your name:")
+print("Welcome",name)
+print("-------------")
+print("Try to guess the word in 10 attempts.")
+hangman()
+print()
